@@ -11,5 +11,18 @@ docker pull chihchun/hubot-slack
 docker -e HUBOT_SLACK_TOKEN=xoxb-1234567890-XXXXXXXXXXXXXXXXXXXXXXXX run chihchun/hubot-slack
 ```
 
+# Hubot Scripts
+hubot-diagnostics
+hubot-help
+hubot-heroku-keepalive
+hubot-google-images
+hubot-google-translate
+hubot-pugme
+hubot-maps
+hubot-redis-brain
+hubot-rules
+hubot-shipit
+hubot-moretext
+
 ## Reference
 * Bot Users | Slack https://api.slack.com/bot-users

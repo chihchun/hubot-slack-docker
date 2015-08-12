@@ -26,5 +26,9 @@ RUN yo hubot --name="Hubot" --defaults
 # Install slack adapter
 RUN npm install hubot-slack --save
 
+# Install moretext
+RUN npm install moretext --save
+ADD scripts/moretext.coffee ${BOTDIR}/scripts/moretext.coffee
+
 # Entrypoint
 ENTRYPOINT ["/bin/sh", "-c", "cd ${BOTDIR} && bin/hubot --adapter slack"]
