@@ -8,7 +8,7 @@ Setup a hubot from https://slack.com/services/new/hubot and assign the API token
 
 ```
 docker pull chihchun/hubot-slack
-docker -e HUBOT_SLACK_TOKEN=xoxb-1234567890-XXXXXXXXXXXXXXXXXXXXXXXX run chihchun/hubot-slack
+docker run -e HUBOT_SLACK_TOKEN=xoxb-1234567890-XXXXXXXXXXXXXXXXXXXXXXXX -d chihchun/hubot-slack
 ```
 
 # Hubot Scripts
