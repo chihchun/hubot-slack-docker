@@ -23,6 +23,8 @@ docker run -e HUBOT_SLACK_TOKEN=xoxb-1234567890-XXXXXXXXXXXXXXXXXXXXXXXX -d chih
 * hubot-rules
 * hubot-shipit
 * hubot-moretext
+* hubot-standup-alarm
+* hubot-victory
 
 ## Reference
 * Bot Users | Slack https://api.slack.com/bot-users

@@ -10,7 +10,7 @@ ENV COFFEE_SCRIPT=1.10.0
 # Usual update / upgrade
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
- && apt-get install -y redis-server
+ && apt-get install -y jq
 
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -37,6 +37,21 @@ RUN npm install hubot-slack@${HUBOT_SLACK_VERSION} --save
 # Install moretext
 RUN npm install moretext@1.0.0 --save
 ADD scripts/moretext.coffee ${BOTDIR}/scripts/moretext.coffee
+
+# Insall standup-alarm
+RUN npm install hubot-standup-alarm@0.1.0 --save \
+ && (cat external-scripts.json && echo '["hubot-standup-alarm"]') | jq -s add > external-scripts.json.new \
+ && mv external-scripts.json.new external-scripts.json
+
+# Install hubot-victory
+RUN npm install hubot-victory@1.5.3 \
+ && (cat external-scripts.json && echo '["hubot-victory"]') | jq -s add > external-scripts.json.new \
+ && mv external-scripts.json.new external-scripts.json
+
+# Install sentimental (required redis-server)
+# RUN npm install hubot-sentimental@1.0.8 --save \
+#  && (cat external-scripts.json && echo '["hubot-sentimental"]') | jq -s add > external-scripts.json.new \
+# && mv external-scripts.json.new external-scripts.json
 
 # Entrypoint
 CMD ["/bin/sh", "-c", "cd ${BOTDIR} && bin/hubot --adapter slack"]
